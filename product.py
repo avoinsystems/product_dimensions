@@ -10,8 +10,10 @@ class Product(models.Model):
     def compute_volume(self):
         if not self.length or not self.height or not self.width or not self.dimensional_uom:
             self.volume = False
+            self.volume_display = False
         else:
-            self.volume = self.length * self.height * self.width / pow(self.dimensional_uom.factor, 3)
+            self.volume_display = self.length * self.height * self.width
+            self.volume = self.volume_display / pow(self.dimensional_uom.factor, 3)
 
     length = fields.Float(
         string='Length'
@@ -26,9 +28,19 @@ class Product(models.Model):
     )
 
     volume = fields.Float(
-        string='Volume',
+        string='Volume m3',
         help='The volume in m³.',
+        digits=(16, 6),
         store=True,
+        multi='volume',
+        compute=compute_volume
+    )
+
+    volume_display = fields.Float(
+        string='Volume',
+        help='The volume in the same unit of measure as the dimensions',
+        store=True,
+        multi='volume',
         compute=compute_volume
     )
 
