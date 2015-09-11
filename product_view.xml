@@ -15,6 +15,10 @@
                     <field name="volume_display" attrs="{'invisible':[('type','=','service')]}"/>
                     <field name="volume" invisible="1"/>
                 </field>
+                <!--Separate the weight section from the dimensions-->
+                <field name="weight" position="before">
+                    <p><i><b>Weights</b></i></p><p><i><b>(kg)</b></i></p>
+                </field>
             </field>
         </record>
     </data>
