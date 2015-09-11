@@ -13,6 +13,7 @@
                     <field name="height" attrs="{'invisible':[('type','=','service')]}"/>
                     <field name="width" attrs="{'invisible':[('type','=','service')]}"/>
                     <field name="volume_display" attrs="{'invisible':[('type','=','service')]}"/>
+                    <field name="volume" invisible="1"/>
                 </field>
             </field>
         </record>
